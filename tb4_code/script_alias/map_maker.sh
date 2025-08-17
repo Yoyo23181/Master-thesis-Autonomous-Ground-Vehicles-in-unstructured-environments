@@ -7,7 +7,7 @@ cd "$SCRIPTPATH"
 
 echo $SCRIPTPATH
 
-tmuxinator start -p /ros_ws/src/tb4_code/script_alias/map_maker/map_maker.yaml
+tmuxinator start -p /ros_ws/src/tb4_code/script_alias/map_maker.yaml
 
 shopt -s expand_aliases
 source ~/.bashrc
