@@ -1,0 +1,14 @@
+name: nlink_publisher
+root: ~/
+
+windows:
+  - ROS1:
+      panes:
+        - default:
+            roscore
+        - nlink:
+             roslaunch nlink_parser linktrack.launch
+        - check:
+            rostopic echo /nlink_linktrack_anchorframe0
+        - publisher:
+            rosrun message_publisher_nlink linktrack_to_range.py
