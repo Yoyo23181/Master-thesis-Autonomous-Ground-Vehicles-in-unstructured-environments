@@ -1,0 +1,23 @@
+name: husky_algo
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - proximity:
+            ros2 run husky_server uwb_proximity_pose
+#        - RSSI:
+#            ros2 run husky_server uwb_RSSI_pose
+#        - slam:
+#            ros2 run husky_server slam_pose
+#        - ranging:
+#            ros2 run husky_server uwb_ranging
+        - odom:
+            ros2 run husky_server odom_pose
+#        - dlio:
+#            ros2 run husky_server uwb_RSSI_pose
+        - spawn:
+            ros2 run husky_server spawn_node
+
+
+
