@@ -1,0 +1,14 @@
+name: tb4_algo
+root: /
+
+windows:
+  - ROS2:
+      panes:
+#        - slam:
+#            ros2 run tb4_code slam_pose
+        - odom:
+            ros2 run tb4_code odom_pose
+#        - RSSI:
+#            ros2 run tb4_code real_RSSI
+        - uwb_odom:
+            ros2 run tb4_code uwb_odom_real

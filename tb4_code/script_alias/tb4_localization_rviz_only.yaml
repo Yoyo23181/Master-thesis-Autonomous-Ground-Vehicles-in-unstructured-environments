@@ -1,0 +1,18 @@
+name: tb4_experiment
+root: /
+
+windows:
+  - ROS2:
+      panes:
+        - initpose:
+              'sleep 5; ros2 topic pub --once /tb3/initialpose geometry_msgs/PoseWithCovarianceStamped "{header: {frame_id: map}, pose: {pose: {position: {x: 0.004, y: -0.010, z: -1.663}, orientation: {z: -0.73874235779474, w: 0.6739879292686608 }}, covariance: [0.25,0,0,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.06853891909122467]}}"'
+        - localization:
+            ros2 launch turtlebot4_navigation localization.launch.py map:=map_pleinlaan_1_31_july.yaml namespace:=/tb3
+        - rviz:
+            ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/tb3
+        - robot_state:
+            ros2 run robot_state_publisher robot_state_publisher --ros-args -r __ns:=/tb3 -r /tf:=/tb3/tf -r /tf_static:=/tb3/tf_static -p robot_description:="$( xacro /opt/ros/humble/share/turtlebot4_description/urdf/standard/turtlebot4.urdf.xacro)"
+        - transfo:
+            ros2 run tb4_code odom_to_base_link   --ros-args -r /tf:=/tb3/tf -r /tf_static:=/tb3/tf_static
+        - bag:
+            sleep 10; ros2 bag play merged_bag

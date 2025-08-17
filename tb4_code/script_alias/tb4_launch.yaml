@@ -1,0 +1,8 @@
+name: tb4_simulation
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - simulation:
+            ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py

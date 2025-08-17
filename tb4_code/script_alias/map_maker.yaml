@@ -1,0 +1,10 @@
+name: tb4_map_macker
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - slam:
+            ros2 launch tb4_code slam.launch.py
+        - rviz:
+            ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/tb3
