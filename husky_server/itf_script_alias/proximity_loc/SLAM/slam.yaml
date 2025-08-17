@@ -1,0 +1,12 @@
+name: husky_slam
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - simulation:
+            ros2 launch husky_server simulation_slam.launch.py
+        - true_location:
+            ros2 launch husky_server ground_truth.launch.py
+        - pose:
+            ros2 run husky_server slam_pose

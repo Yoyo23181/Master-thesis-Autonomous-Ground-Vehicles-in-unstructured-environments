@@ -1,0 +1,14 @@
+name: husky_proximity
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - simulation:
+            ros2 launch husky_server simulation.launch.py
+        - true_location:
+            ros2 launch husky_server ground_truth.launch.py
+        - loc:
+            ros2 run husky_server uwb_RSSI_pose
+        - spawn:
+            ros2 run husky_server spawn_node

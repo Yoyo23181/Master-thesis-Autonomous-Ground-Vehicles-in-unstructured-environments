@@ -1,0 +1,20 @@
+name: husky_slam
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - simu_exp:
+            ros2 launch husky_server exp_slam.launch.py
+        - robot:
+            ros2 run robot_state_publisher robot_state_publisher --ros-args -r __ns:=/a200_0957 -r /tf:=/a200_0957/tf -r /tf_static:=/a200_0957/tf_static -p robot_description:="$( xacro /root/clearpath/robot.urdf.xacro)"
+        - obl:
+            ros2 run husky_server odom_to_base_link --ros-args -r /tf:=/a200_0957/tf -r /tf_static:=/a200_0957/tf_static
+        - bag:
+            ros2 bag play test_record_husky/ --clock
+
+
+#        - true_location:
+#            ros2 launch husky_server ground_truth.launch.py
+#        - pose:
+#            ros2 run husky_server slam_pose

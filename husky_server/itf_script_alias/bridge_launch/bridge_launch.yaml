@@ -1,0 +1,17 @@
+name: bridge_receiver
+root: ~/
+
+windows:
+  - ROS2:
+      panes:
+        - bridge:
+            source /opt/ros/noetic/install_isolated/setup.bash
+            source /ros1_ws/devel/local_setup.bash
+            source /opt/ros/humble/install/setup.bash
+            source /bridge_ws/install/local_setup.bash
+            ros2 run ros1_bridge dynamic_bridge
+        - receiver:
+            source /opt/ros/humble/install/setup.bash
+            source /ros2_ws/install/local_setup.bash
+            ros2 run nlink_parser_tools nodeframe4_listener
+
